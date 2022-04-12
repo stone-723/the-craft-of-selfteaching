@@ -130,3 +130,76 @@ nth-of-type会把指定的元素的盒子排列序号 nth-of-type对父元素里
 4.before和after必须有content属性
 5.before在父元素内容的前面创建元素 after在父元素的内容后面插入元素（一前一后）
 6.伪元素选择器和标签选择器一样 权重为1
+
+# 使用伪元素清除浮动
+3.父级添加after伪元素
+：after方式是额外标签的升级版  也是给父元素添加
+语法：
+.clearfix::after{      设置一个伪元素
+  content:'';          伪元素必写属性
+  display:block;       插入的元素必须是块级
+  height:0;            不要看见这个元素
+  clear:both;          核心代码清除浮动
+  visibility:hidden;   不要看见这个元素
+  }
+.clearfix{ *zoom:1;}   IE6.7专有
+优点 没有增加标签 结构简单
+缺点 照顾低版本浏览器
+
+4.父级添加双伪元素
+也是给父元素添加
+.clearfix::before,.clearfix::after{  设置双伪元素
+    content:"";                      伪元素必写属性
+    display:table;                   转换为块级元素并且一行显示
+    }
+.clearfix:after{                     清除浮动
+    clear:both;
+    }
+.clearfix{
+     *zoom:1;
+     }
+优点 代码更简洁
+缺点 照顾低版本浏览器
+
+# CSS3盒子模型box-sizing
+
+CSS3中可以通过box-sizing来指定盒模型
+有2个值即可指定为
+content-box
+border-box
+计算盒子大小的方式发生了改变
+1.box-sizing：content-box 盒子大小为width+padding+border 以前默认的
+2.box-sizing：border-box 盒子大小为width
+即 如果将属性改为border-box
+那padding和border就不会撑大盒子 前提是padding和border不超过width宽度
+可在CSS开头使用通配符选择器将这个属性赋给所有盒子
+
+# CSS3滤镜filter
+例   filter：blur（） blur 模糊处理 括号数值越大图片越模糊
+
+# CSS3calc函数
+calc（）此CSS函数让你在声明CSS属性值时执行一些计算
+例如
+width：calc（100% - 30px）（让子盒子永远比父盒子小30像素）
+
+# CSS3过渡
+谁做过渡给谁加
+过渡（transition）可以在不使用JS和flash动画的情况下
+让元素从一种样式变换为另一种样式时为元素添加效果
+过渡动画可让页面更好看 更动感 和：hover一起搭配使用比较常见
+
+transition：需要过渡的属性  花费时间  运动曲线  何时开始；
+1.属性          想要变化的CSS属性 宽度高度 背景颜色 内外边距都可以如果想要所有的属性都变化过渡 写一个all就行
+2.花费时间      单位是秒 （必须写单位） 例如0.5s
+3.运动曲线      默认是ease（可以省略）linear 匀速  ease 渐慢  ease-in 加速  ease-out 减速  ease-in-out 先加速后减速
+4.何时开始      单位是秒 （必须写单位） 可以设置延迟触发事件 默认是0s（可以省略） 
+如果想要写多个属性 使用逗号进行分割 想要多个属性都变化 直接写all
+
+# 狭义的HTML5 CSS3
+HTML5相关结构标签本身
+CSS3相关样式
+
+
+# 广义的HTML5 
+是指HTML5本身+CSS3+JavaScript
+现在基本都指这个

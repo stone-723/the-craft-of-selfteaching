@@ -596,12 +596,12 @@ both       同时清除左右两侧浮动的影响
 3.父级添加after伪元素
 ：after方式是额外标签的升级版  也是给父元素添加
 语法：
-.clearfix：after{
-  content："";
-  display:block;
-  height:0;
-  clear:both;
-  visibility:hidden;
+.clearfix::after{      设置一个伪元素
+  content:'';          伪元素必写属性
+  display:block;       插入的元素必须是块级
+  height:0;            不要看见这个元素
+  clear:both;          核心代码清除浮动
+  visibility:hidden;   不要看见这个元素
   }
 .clearfix{ *zoom:1;}   IE6.7专有
 优点 没有增加标签 结构简单
@@ -609,11 +609,11 @@ both       同时清除左右两侧浮动的影响
 
 4.父级添加双伪元素
 也是给父元素添加
-.clearfix:before,.clearfix:after{
-    content:"";
-    display:table;
+.clearfix::before,.clearfix::after{  设置双伪元素
+    content:"";                      伪元素必写属性
+    display:table;                   转换为块级元素并且一行显示
     }
-.clearfix:after{
+.clearfix:after{                     清除浮动
     clear:both;
     }
 .clearfix{
