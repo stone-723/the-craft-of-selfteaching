@@ -381,12 +381,87 @@ F11程序单步执行 让程序一行一行的执行 这时候观察watch中变�
 
         alert('班级总成绩为' + sum + '分');
         alert('班级平均成绩为' + average + '分');
+## 双重for循环
+循环嵌套是指在一个循环语句中再定义一个循环语句的语法结构 例如再for循环语句中 可以再嵌套一个for循环 这样for循环语句我们称之为双重for循环.
+语法：
+for(外层的初始化变量；外层的条件表达式；外层的操作表达式）{
+      for（里层的初始化变量；里层的条件表达式；里层的操作表达式{
+          //执行语句
+          }
+     }     
 
-
-
-
-
+我们可以把里层的循环看作外层循环的语句
+## 外层循环循环一次 里面的循环执行全部##
+ 
+**        //99乘法表练习题
+                var str = '';
+        for (var i = 1; i <= 9; i++) {//外层循环控制行数
+            for (var u = 1; u <= i; u++) {//里层循环控制每一行的个数  j <= i
+                str += u + '×' + i + '=' + i * u + '\t';
+            }
+            str += '\n';
+        }
+        console.log(str);
 
 ## while循环
+语法结构
+while（条件表达式）{
+        //循环体
+}
+执行思路
+当条件表达式结果为true 则执行循环体 否则退出循环
+注：里面也应该有计数器喝初始化变量
+有操作表达式完成计数器的更新 来防止死循环
+
+while判断练习题
+        var love = prompt('do you love me?');
+        while (love != 'i love you') {
+            prompt('do you love me?');
+        }
+        alert('love you too!');
 
 ## do...while循环
+do...while语句时while语句的一个变体 该循环会先执行一次代码块 然后对条件表达式进行判断 如果条件为真 就会重复执行循环体 否则退出循环体.
+语法结构
+do{
+//循环体
+} while（条件表达式)
+执行思路
+和while不同的是 do while会先执行一次循环体 再来判断条件 
+
+**do...while至少会执行一次循环体
+
+        do while循环做上面while循环的题目的写法
+        do {
+            var love = prompt('do you love me?');
+        } while (love !== 'i love you')
+        alert('love you too!');
+        
+## 循环小结
+js循环中有for while do while
+三个循环很多情况都可以相互替代使用
+如果是用来计次 根数字相关的 三者使用基本相同 但for稍微常用些
+while和do while可以做更复杂的条件判断 比for灵活些
+while和do while执行顺序不同 while先判断后执行 do...while先执行一次 再判断执行
+do...while至少执行一次 而while可能一次也不执行
+for循环是非常关键的 需要完全掌握
+
+#  continue break
+
+## continue关键字
+continue关键字用于立即跳出本次循环 继续剩余循环（本次循环体中continue之后的代码就会少执行一次）
+用来剔除某些特定条件 在发生这些的时候 跳过这次循环
+
+例子 求1-100之间 除了能被7整除之外的整数和
+        for (var i = 1; i <= 100; i++) {
+            if (i % 7 == 0) {
+                continue;
+            }
+            sum += i;
+        }
+        console.log(sum);
+
+## break关键字
+break关键字用于立即跳出整个循环（循环结束）
+
+
