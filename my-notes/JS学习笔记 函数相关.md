@@ -80,4 +80,59 @@ continue：跳出本次循环 继续执行下次循环
 return：不仅可以退出循环 还能返回return语句中的值 同时还可以结束当前的函数体内的代码
 
 
-## 
+# arguments 的使用
+当我们不确定有多少个参数传递的时候 使用arguments来获取 在javaScript中 arguments实际上
+是当前函数的一个内置对象 所有的函数都内置了一个arguments对象  arguments对象中储存了传递的所有实参.
+
+arguments展示形式是一个伪数组 因此可以进行遍历 
+伪数组的特点：
+1.具有length属性
+2.按索引方式储存数据
+3.不具有数组的push pop等方法
+
+**可以使用数组的方式遍历arguments
+i=0 i<arguments.lengts i++ consolo.log(arguments[i])
+只有函数才有arguments对象 而且是每个函数都内置好了这个arguments
+
+# 函数可以调用另一个函数
+每个函数都是独立代码块 因此函数会互相调用
+使用函数调用函数的例子
+
+        function backDay() {
+            var year = prompt('请输入年份');
+            if (isLeapYear(year)) {
+                alert('当前年份是闰年 2月份有29天');
+            } else {
+                alert('当前年份是平年 2月份有28天');
+            }
+        }
+        backDay();
+
+        function isLeapYear(year) {
+            var flag = false;
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                flag = true
+            }
+            return flag;
+        }
+        
+# 函数的2种声明方式
+1.利用函数关键字自定义函数（命名函数 )
+function xx(){
+ }
+
+2.函数表达式(匿名函数）
+var 变量名 = function(){};
+var fun = funcition(){
+   console.log（'我是函数表达式'）；
+ }
+fun();
+注意**fun是变量名 不是函数名
+      函数表达式声明方式和声明变量差不多 变量里存的值 函数表达式里存的函数
+      函数表达式也可以传递参数 如下
+      
+      var fun = function（aru）{
+              console.log（aru）；
+      }
+      fun（'我是被传递的实参'）；
+      
